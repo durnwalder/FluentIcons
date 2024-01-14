@@ -1,8 +1,10 @@
 trigger:
 - none
 
+
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'macOS-13'
+
 
 variables:
   buildConfiguration: 'Release'
@@ -15,6 +17,11 @@ steps:
   displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
   inputs:
     version: $(dotnetSdkVersion)
+- task: PowerShell@2
+  displayName: "install maui workload"
+  inputs:
+    targetType: 'inline'
+    script: 'dotnet workload install maui'
 
 - task: DotNetCoreCLI@2
   displayName: 'Build'
