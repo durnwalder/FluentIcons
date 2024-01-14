@@ -1,0 +1,51 @@
+trigger:
+- none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  buildConfiguration: 'Release'
+  dotnetSdkVersion: '8.0.x' # replace with your .NET SDK version
+  Major: '1' # replace with your major version
+  Minor: '0' # replace with your minor version
+
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
+  inputs:
+    version: $(dotnetSdkVersion)
+
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: 'build'
+    projects: 'CodeGeneration/CodeGeneration.csproj'
+    
+- task: DotNetCoreCLI@2
+  displayName: 'Build'
+  inputs:
+    command: 'build'
+    projects: 'FluentIcons/FluentIcons.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+
+- script: |
+    echo "##vso[task.setvariable variable=VERSION;]1.0.$(Build.BuildId)"
+  displayName: 'Set version variable'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Pack'
+  inputs:
+    command: 'pack'
+    packagesToPack: 'FluentIcons/FluentIcons.csproj'
+    nobuild: true
+    versioningScheme: 'byEnvVar'
+    versionEnvVar: 'VERSION'
+
+- task: CmdLine@2
+  displayName: 'Push to Azure Artifacts'
+  inputs:
+    script: |
+      dotnet nuget add source "https://pkgs.dev.azure.com/durnwalder/LingoDecks/_packaging/LingoDecks/nuget/v3/index.json" --name "LingoDecks" --username "azdo" --password $(PIPELINE_TOKEN) --store-password-in-clear-text
+      dotnet nuget push "$(Build.ArtifactStagingDirectory)/**/*.nupkg" --source "LingoDecks" --api-key $(PIPELINE_TOKEN)
+    workingDirectory: '$(Build.ArtifactStagingDirectory)'
