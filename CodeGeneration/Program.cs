@@ -38,8 +38,8 @@ class Program
                 continue;
             }
             addedProperties.Add(propertyName);
-            string unicode = "\\u" + icon.Value.ToString("x4");
-            writer.WriteLine($"        public static string {propertyName} => \"{unicode}\";");
+            string s = char.ConvertFromUtf32(icon.Value);
+            writer.WriteLine($"        public static string {propertyName} => \"{s}\";");
         }
         writer.WriteLine("    }");
         writer.WriteLine("}");
