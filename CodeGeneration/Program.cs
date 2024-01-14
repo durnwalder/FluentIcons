@@ -32,7 +32,7 @@ class Program
         var addedProperties = new HashSet<string>();
         foreach (var icon in icons)
         {
-            string propertyName = "Icon" + icon.Key.Replace("_", "");
+            string propertyName = icon.Key;
             if (addedProperties.Contains(propertyName))
             {
                 continue;
