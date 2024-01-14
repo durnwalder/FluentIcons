@@ -46,24 +46,30 @@ class Program
     }
 
     private static void GenerateXamlFile(string iconType, Dictionary<string, int> icons)
+{
+    var ns = XNamespace.Get("http://schemas.microsoft.com/dotnet/2021/maui");
+    var nsX = XNamespace.Get("http://schemas.microsoft.com/winfx/2009/xaml");
+
+    var root = new XElement(ns + "ResourceDictionary",
+        new XAttribute(XNamespace.Xmlns + "x", nsX),
+        new XAttribute("xmlns", ns));
+
+    var addedKeys = new HashSet<string>();
+    foreach (var icon in icons)
     {
-        var ns = XNamespace.Get("http://schemas.microsoft.com/dotnet/2021/maui");
-        var nsX = XNamespace.Get("http://schemas.microsoft.com/winfx/2009/xaml");
-
-        var root = new XElement(ns + "ResourceDictionary",
-            new XAttribute(XNamespace.Xmlns + "x", nsX),
-            new XAttribute("xmlns", ns));
-
-        foreach (var icon in icons)
+        string key = "Icon" + icon.Key.Replace("_", "");
+        if (addedKeys.Contains(key))
         {
-            string key = "Icon" + icon.Key.Replace("_", "");
-            string unicode = "&#x" + icon.Value.ToString("x4") + ";";
-            var stringElement = new XElement(nsX + "String", new XAttribute(nsX + "Key", key));
-            stringElement.Add(new XText(unicode));
-            root.Add(stringElement);
+            continue;
         }
-
-        var doc = new XDocument(new XDeclaration("1.0", "UTF-8", null), root);
-        doc.Save($"../FluentIcons/{iconType}.xaml");
+        addedKeys.Add(key);
+        string unicode = "&#x" + icon.Value.ToString("x4") + ";";
+        var stringElement = new XElement(nsX + "String", new XAttribute(nsX + "Key", key));
+        stringElement.Add(new XText(unicode));
+        root.Add(stringElement);
     }
+
+    var doc = new XDocument(new XDeclaration("1.0", "UTF-8", null), root);
+    doc.Save($"../FluentIcons/{iconType}.xaml");
+}
 }

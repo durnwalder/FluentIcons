@@ -6319,7 +6319,6 @@
   <x:String x:Key="Iconicfluentnotebooksectionarrowright20regular">&amp;#xef7c;</x:String>
   <x:String x:Key="Iconicfluentpersonsearch20regular">&amp;#xef7d;</x:String>
   <x:String x:Key="Iconicfluentpersonsearch24regular">&amp;#xef7e;</x:String>
-  <x:String x:Key="Iconicfluentreorder20regular">&amp;#xef7f;</x:String>
   <x:String x:Key="Iconicfluenttextaddt20regular">&amp;#xef80;</x:String>
   <x:String x:Key="Iconicfluenttextalignjustifylow9020regular">&amp;#xef81;</x:String>
   <x:String x:Key="Iconicfluenttextalignjustifylow9024regular">&amp;#xef82;</x:String>
@@ -6358,8 +6357,6 @@
   <x:String x:Key="Iconicfluenttextt12regular">&amp;#xf546;</x:String>
   <x:String x:Key="Iconicfluenttextt16regular">&amp;#xf547;</x:String>
   <x:String x:Key="Iconicfluenttextt32regular">&amp;#xf55b;</x:String>
-  <x:String x:Key="Iconicfluenttextboxsettings20regular">&amp;#xf55c;</x:String>
-  <x:String x:Key="Iconicfluenttextboxsettings24regular">&amp;#xf57f;</x:String>
   <x:String x:Key="Iconicfluentvoicemailsubtract20regular">&amp;#xf580;</x:String>
   <x:String x:Key="Iconicfluentadd32regular">&amp;#xf58d;</x:String>
   <x:String x:Key="Iconicfluentadd48regular">&amp;#xf598;</x:String>
