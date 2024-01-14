@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <UseMaui>true</UseMaui>
   </PropertyGroup>
-    <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <!-- <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="copy ../../fonts/FluentSystemIcons-Filled.ttf Resources" Condition="'$(OS)' == 'Windows_NT'" />
     <Exec Command="copy ../../fonts/FluentSystemIcons-Regular.ttf Resources" Condition="'$(OS)' == 'Windows_NT'" />
     <Exec Command="cp ../../fonts/FluentSystemIcons-Filled.ttf Resources" Condition="'$(OS)' != 'Windows_NT'" />
@@ -13,7 +13,7 @@
     <Exec Command="copy ../../fonts/FluentSystemIcons-Regular.json Resources" Condition="'$(OS)' == 'Windows_NT'" />
     <Exec Command="cp ../../fonts/FluentSystemIcons-Filled.json Resources" Condition="'$(OS)' != 'Windows_NT'" />
     <Exec Command="cp ../../fonts/FluentSystemIcons-Regular.json Resources" Condition="'$(OS)' != 'Windows_NT'" />
-  </Target>
+  </Target> -->
 
   <Target Name="RunCodeGeneration">
     <Exec Command="dotnet run --project ../CodeGeneration/CodeGeneration.csproj" />
