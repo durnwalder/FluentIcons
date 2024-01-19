@@ -14,8 +14,8 @@ namespace FluentIcons
         {
             builder.ConfigureFonts(fonts =>
             {
-                fonts.AddEmbeddedResourceFont(typeof(MauiProgramExtensions).Assembly, FilledFontFamily, FilledFileName);
-                fonts.AddEmbeddedResourceFont(typeof(MauiProgramExtensions).Assembly, RegularFontFamily, RegularFileName);
+                fonts.AddEmbeddedResourceFont(typeof(MauiProgramExtensions).Assembly, FilledFileName, FilledFontFamily);
+                fonts.AddEmbeddedResourceFont(typeof(MauiProgramExtensions).Assembly, RegularFileName, RegularFontFamily);
             });
 
             return builder;
