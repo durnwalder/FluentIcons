@@ -83,7 +83,7 @@ private static void GenerateCsFile(string iconType, Dictionary<string, int> icon
                         SyntaxFactory.IdentifierName("GetFontImageSource")),
                     SyntaxFactory.ArgumentList(SyntaxFactory.SeparatedList(new[] {
                         SyntaxFactory.Argument(SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(iconValue))),
-                        SyntaxFactory.Argument(SyntaxFactory.LiteralExpression(SyntaxKind.StringLiteralExpression, SyntaxFactory.Literal(iconType == "Filled" ? "FluentIconConstants.FilledFontFamily" : "FluentIconConstants.RegularFontFamily")))
+                        SyntaxFactory.Argument(iconType == "Filled" ? SyntaxFactory.IdentifierName("FluentIconConstants.FilledFontFamily") : SyntaxFactory.IdentifierName("FluentIconConstants.RegularFontFamily"))
                     })))))
             .WithSemicolonToken(SyntaxFactory.Token(SyntaxKind.SemicolonToken));
 
