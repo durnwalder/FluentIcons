@@ -6,6 +6,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+        <PackageReference Include="Microsoft.Build" Version="16.10.0" />
+    <PackageReference Include="Microsoft.Build.Framework" Version="16.10.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.8.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.8.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.8.0" />
+  </ItemGroup>
     <!-- <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
     <Exec Command="copy ../../fonts/FluentSystemIcons-Filled.json Resources" Condition="'$(OS)' == 'Windows_NT'" />
     <Exec Command="copy ../../fonts/FluentSystemIcons-Regular.json Resources" Condition="'$(OS)' == 'Windows_NT'" />
